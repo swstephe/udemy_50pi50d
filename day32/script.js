@@ -5,22 +5,18 @@ const fast = document.getElementById('fast')
 
 toggles.forEach(toggle => {
   toggle.addEventListener('change', e => {
-    doTheTrick(e.target)
+    if (good.checked && cheap.checked && fast.checked) {
+      if (good === e.target) {
+        fast.checked = false
+      }
+
+      if (cheap === e.target) {
+        good.checked = false
+      }
+
+      if (fast === e.target) {
+        cheap.checked = false
+      }
+    }
   })
 })
-
-function doTheTrick(theClickedOne) {
-  if (good.checked && cheap.checked && fast.checked) {
-    if (good === theClickedOne) {
-      fast.checked = false
-    }
-
-    if (cheap === theClickedOne) {
-      good.checked = false
-    }
-
-    if (fast === theClickedOne) {
-      cheap.checked = false
-    }
-  }
-}

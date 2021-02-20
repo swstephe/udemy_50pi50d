@@ -4,6 +4,18 @@ const times = document.querySelector('#times')
 let clickTime = 0
 let timesClicked = 0
 
+const createHeart = e => {
+  const heart = document.createElement('i')
+  heart.classList.add('fas')
+  heart.classList.add('fa-heart')
+  heart.style.top = `${e.clientY - e.target.offsetTop}px`
+  heart.style.left = `${e.clientX - e.target.offsetLeft}px`
+
+  loveMe.appendChild(heart)
+  times.innerHTML = (++timesClicked).toString()
+  setTimeout(() => heart.remove(), 1000)
+}
+
 loveMe.addEventListener('click', e => {
   if (clickTime === 0) {
     clickTime = new Date().getTime()
@@ -17,15 +29,3 @@ loveMe.addEventListener('click', e => {
     }
   }
 })
-
-const createHeart = e => {
-  const heart = document.createElement('i')
-  heart.classList.add('fas')
-  heart.classList.add('fa-heart')
-  heart.style.top = `${e.clientY - e.target.offsetTop}px`
-  heart.style.left = `${e.clientX - e.target.offsetLeft}px`
-
-  loveMe.appendChild(heart)
-  times.innerHTML = (++timesClicked).toString()
-  setTimeout(() => heart.remove(), 1000)
-}

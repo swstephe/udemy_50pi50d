@@ -1,9 +1,7 @@
 const nums = document.querySelectorAll('.nums span')
 const counter = document.querySelector('.counter')
 const final = document.querySelector('.final')
-const replay = document.querySelector('#replay')
-
-runAnimation()
+const replay = document.getElementById('replay')
 
 function resetDOM() {
   counter.classList.remove('hide')
@@ -36,3 +34,5 @@ replay.addEventListener('click', () => {
   resetDOM()
   runAnimation()
 })
+
+runAnimation()

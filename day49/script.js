@@ -2,17 +2,6 @@ const form = document.getElementById('form')
 const input = document.getElementById('input')
 const todosUL = document.getElementById('todos')
 
-const todos = JSON.parse(localStorage.getItem('todos'))
-
-if (todos) {
-  todos.forEach(todo => addTodo(todo))
-}
-
-form.addEventListener('submit', e => {
-  e.preventDefault()
-  addTodo()
-})
-
 function addTodo(todo) {
   let todoText = input.value
 
@@ -43,7 +32,7 @@ function addTodo(todo) {
 }
 
 function updateLS() {
-  todosEl = document.querySelectorAll('li')
+  const todosEl = document.querySelectorAll('li')
   const todos = []
   todosEl.forEach(todoEl => {
     todos.push({
@@ -52,4 +41,15 @@ function updateLS() {
     })
   })
   localStorage.setItem('todos', JSON.stringify(todos))
+}
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  addTodo()
+})
+
+const todos = JSON.parse(localStorage.getItem('todos'))
+
+if (todos) {
+  todos.forEach(todo => addTodo(todo))
 }

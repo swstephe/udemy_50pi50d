@@ -1,14 +1,11 @@
-const API_URL =
-  'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=bc50cf29dadb2abfaa403235d0ec6759&page=1'
+const BASE_URL = 'https://api.themoviedb.org/3'
+const API_KEY = 'api_key=bc50cf29dadb2abfaa403235d0ec6759'
+const API_URL = `${BASE_URL}/discover/movie?sort_by=popularity.desc&${API_KEY}&page=1`
+const SEARCH_API = `${BASE_URL}/search/movie?${API_KEY}&query="`
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280'
-const SEARCH_API =
-  'https://api.themoviedb.org/3/search/movie?api_key=bc50cf29dadb2abfaa403235d0ec6759&query="'
 const form = document.getElementById('form')
 const search = document.getElementById('search')
 const main = document.getElementById('main')
-
-// Get initial movies
-getMovies(API_URL)
 
 async function getMovies(url) {
   const res = await fetch(url)
@@ -57,3 +54,6 @@ form.addEventListener('submit', e => {
     window.location.reload()
   }
 })
+
+// Get initial movies
+getMovies(API_URL)

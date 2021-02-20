@@ -29,17 +29,12 @@ clipboardEl.addEventListener('click', () => {
 })
 
 generateEl.addEventListener('click', () => {
-  const length = +lengthEl.value
-  const hasLower = lowercaseEl.checked
-  const hasUpper = uppercaseEl.checked
-  const hasNumber = numbersEl.checked
-  const hasSymbol = symbolsEl.checked
   resultEl.innerText = generatePassword(
-    hasLower,
-    hasUpper,
-    hasNumber,
-    hasSymbol,
-    length
+    lowercaseEl.checked,
+    uppercaseEl.checked,
+    numbersEl.checked,
+    symbolsEl.checked,
+    +lengthEl.value
   )
 })
 

@@ -45,8 +45,6 @@ const submitBtn = document.getElementById('submit')
 let currentQuiz = 0
 let score = 0
 
-loadQuiz()
-
 function loadQuiz() {
   deselectAnswers()
   const currentQuizData = quizData[currentQuiz]
@@ -63,13 +61,9 @@ function deselectAnswers() {
 }
 
 function getSelected() {
-  let answer
-  answerEls.forEach(answerEl => {
-    if (answerEl.checked) {
-      answer = answerEl.id
-    }
-  })
-  return answer
+  for (let answerEl of answerEls) {
+    if (answerEl.checked) return answerEl.id
+  }
 }
 
 submitBtn.addEventListener('click', () => {
@@ -91,3 +85,5 @@ submitBtn.addEventListener('click', () => {
     }
   }
 })
+
+loadQuiz()
