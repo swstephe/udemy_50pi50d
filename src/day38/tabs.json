@@ -1,0 +1,21 @@
+[{
+  "src": ["1480074568708-e7b720bb3f09", 1053],
+  "alt": "home",
+  "icon": "home",
+  "label": "Home"
+}, {
+  "src": ["1454165804606-c3d57bc86b40", 1050],
+  "alt": "work",
+  "icon": "box",
+  "label": "Work"
+}, {
+  "src": ["1471107340929-a87cd0f5b5f3", 1266],
+  "alt": "blog",
+  "icon": "book-open",
+  "label": "Blog"
+}, {
+  "src": ["1522202176988-66273c2fd55f", 1351],
+  "alt": "about",
+  "icon": "users",
+  "label": "About Us"
+}]
