@@ -7,6 +7,9 @@
 body {
   background-color: #fbfcfe;
   font-family: 'Muli', sans-serif;
+}
+
+#root {
   display: flex;
   align-items: center;
   justify-content: center;

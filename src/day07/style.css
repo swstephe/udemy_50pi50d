@@ -16,9 +16,12 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+#root {
   height: 100vh;
   overflow: hidden;
-  margin: 0;
 }
 
 h1 {
@@ -75,7 +78,6 @@ h1 {
 
 .split.left {
   left: 0;
-  background-image: url('ps.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -90,7 +92,6 @@ h1 {
 
 .split.right {
   right: 0;
-  background-image: url('xbox.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }

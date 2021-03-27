@@ -1,6 +1,7 @@
+import Button from './Button'
+
 function App() {
-  return (
-    <button className="ripple">Click Me</button>
-  )
+  return <Button>Click Me</Button>
 }
+
 export default App

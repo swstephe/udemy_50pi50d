@@ -1,6 +1,8 @@
+import classNames from 'classnames'
 import { useState } from 'react'
+import { range } from '../utils'
 
-const circles = [...Array(4)].map((_, i) => i)
+const count = 4
 
 function App() {
   const [active, setActive] = useState(0)
@@ -11,13 +13,13 @@ function App() {
         <div
           className="progress"
           id="progress"
-          style={{width: `${(active / (circles.length - 1)) * 100}%`}}
+          style={{width: `${(active / (count - 1)) * 100}%`}}
         />
-        {circles.map(i => (
+        {range(1, count).map(i => (
           <div
             key={i}
-            className={`circle ${active === i ? 'active' : ''}`}
-          >{i + 1}</div>
+            className={classNames('circle', {active: active === i})}
+          >{i}</div>
         ))}
       </div>
       <button
@@ -29,7 +31,7 @@ function App() {
       <button
         className="btn"
         id="next"
-        disabled={active >= circles.length - 1}
+        disabled={active >= count - 1}
         onClick={() => setActive(active + 1)}
       >Next</button>
     </div>

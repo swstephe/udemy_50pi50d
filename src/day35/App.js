@@ -1,27 +1,66 @@
+import { useEffect, useRef, useState } from 'react'
+import images from './images.json'
+
+let interval = null
+
+function useInterval(callback, delay) {
+  const savedCallback = useRef()
+
+  useEffect(() => {
+    savedCallback.current = callback
+  }, [callback])
+
+  useEffect(() => {
+    const handler = () => savedCallback.current()
+    if (delay !== null) {
+      interval = setInterval(handler, delay)
+      return () => clearInterval(interval)
+    }
+  })
+}
+
 function App() {
+  const delay = 2000
+  const [idx, setIdx] = useState(0)
+  const run = () => changeImage(idx + 1)
+
+  useInterval(() => {
+    changeImage(idx + 1)
+  }, delay)
+
+  function resetInterval() {
+    clearInterval(interval)
+    interval = setInterval(run, delay)
+  }
+
+  function changeImage(newIdx) {
+    if (newIdx > images.length - 1) {
+      newIdx = 0
+    } else if (idx < 0) {
+      newIdx = images.length - 1
+    }
+    setIdx(newIdx)
+  }
+
   return (
     <div className="carousel">
-      <div className="image-container" id="imgs">
-        <img
-          src="https://images.unsplash.com/photo-1599394022918-6c2776530abb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1458&q=80"
-          alt="first"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
-          alt="second"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1599423300746-b62533397364?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
-          alt="third"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1599561046251-bfb9465b4c44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1492&q=80"
-          alt="fourth"
-        />
+      <div className="image-container" id="imgs"
+           style={{transform: `translateX(${-500*idx}px)`}}>
+        {images.map((image, idx) => (
+          <img key={idx} src={image.src} alt={image.alt} />
+        ))}
       </div>
       <div className="buttons-container">
-        <button id="left" className="btn">Prev</button>
-        <button id="right" className="btn">Next</button>
+        <button id="left" className="btn"
+                onClick={() => {
+                  resetInterval()
+                  changeImage(idx - 1)
+                }}>Prev</button>
+        <button id="right" className="btn"
+                onClick={() => {
+                  resetInterval()
+                  changeImage(idx + 1)
+                }}>Next</button>
       </div>
     </div>
   )

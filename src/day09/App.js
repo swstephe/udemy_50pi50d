@@ -1,13 +1,31 @@
+const sounds = ['applause', 'boo', 'gasp', 'tada', 'victory', 'wrong']
+
+function stopAll() {
+  sounds.forEach(sound => {
+    const audio = document.getElementById(sound)
+    audio.pause()
+    audio.currentTime = 0
+  })
+}
+
+function play(sound) {
+  stopAll()
+  document.getElementById(sound).play()
+}
+
 function App() {
   return (
     <>
-      <audio id="applause" src="sounds/applause.mp3"/>
-      <audio id="boo" src="sounds/boo.mp3"/>
-      <audio id="gasp" src="sounds/gasp.mp3"/>
-      <audio id="tada" src="sounds/tada.mp3"/>
-      <audio id="victory" src="sounds/victory.mp3"/>
-      <audio id="wrong" src="sounds/wrong.mp3"/>
-      <div id="buttons"/>
+      {sounds.map((sound, idx) => (
+        <audio key={'audio.' + idx} id={sound} src={`/sounds/${sound}.mp3`} />
+      ))}
+      <div id="buttons">
+        {sounds.map((sound, idx) => (
+          <button key={'button.' + idx} className='btn' onClick={() => play(sound)}>
+            {sound}
+          </button>
+        ))}
+      </div>
     </>
   )
 }

@@ -1,22 +1,41 @@
+import classNames from 'classnames'
+import { useState } from 'react'
+import ratings from './ratings.json'
+
 function App() {
+  const [active, setActive] = useState(2)
+  const [sent, setSent] = useState(false)
+
   return (
     <div id="panel" className="panel-container">
-      <strong>How satisfied are you with our<br />customer support performance?</strong>
-      <div className="ratings-container">
-        <div className="rating">
-          <img src="https://image.flaticon.com/icons/svg/187/187150.svg" alt="" />
-          <small>Unhappy</small>
-        </div>
-        <div className="rating">
-          <img src="https://image.flaticon.com/icons/svg/187/187136.svg" alt="" />
-          <small>Neutral</small>
-        </div>
-        <div className="rating active">
-          <img src="https://image.flaticon.com/icons/svg/187/187122.svg" alt="" />
-          <small>Satisfied</small>
-        </div>
-      </div>
-      <button className="btn" id="send">Send Review</button>
+      {!sent ? (
+        <>
+          <strong>How satisfied are you with our<br />customer support performance?</strong>
+          <div className="ratings-container">
+            {ratings.map((rating, idx) => (
+              <div key={idx}
+                   className={classNames('rating', {active: active === idx})}
+                   onClick={() => setActive(idx)}
+              >
+                <img src={rating.img} alt={rating.label} />
+                <small>{rating.label}</small>
+              </div>
+            ))}
+          </div>
+          <button className="btn" id="send"
+                  onClick={() => setSent(true)}
+          >Send Review</button>
+        </>
+        ) : (
+        <>
+          <i className="fas fa-heart"/>
+          <strong>Thank You!</strong>
+          <br/>
+          <strong> Feedback: {ratings[active].label}</strong>
+          <p>We'll use your feedback to improve our customer support</p>
+        </>
+        )
+      }
     </div>
   );
 }

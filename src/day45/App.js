@@ -1,29 +1,35 @@
+import classNames from 'classnames'
+import { useState } from 'react'
+
 function App() {
+  const [visible, setVisible] = useState(false)
+  const nav = (classes) => classNames('nav', {visible}, classes)
+
   return (
     <>
-      <button className="nav-btn open-btn">
+      <button className="nav-btn open-btn" onClick={() => setVisible(true)}>
         <i className="fas fa-bars" />
       </button>
       <img src="https://logos-download.com/wp-content/uploads/2016/03/Netflix_logo.png" alt="Logo" className="logo" />
       <p className="text">Mobile Navigation</p>
-      <div className="nav nav-black">
-        <nav className="nav nav-red">
-          <nav className="nav nav-white">
-            <button className="nav-btn close-btn">
+      <div className={nav("nav-black")}>
+        <nav className={nav("nav-red")}>
+          <nav className={nav("nav-white")}>
+            <button className="nav-btn close-btn" onClick={() => setVisible(false)}>
               <i className="fas fa-times">/</i>
             </button>
             <img src="https://logos-download.com/wp-content/uploads/2016/03/Netflix_logo.png" alt="Logo"
                  className="logo" />
             <ul className="list">
-              <li><a href="#">Teams</a></li>
-              <li><a href="#">Locations</a></li>
-              <li><a href="#">Life at Netflix</a></li>
+              <li><a href=".">Teams</a></li>
+              <li><a href=".">Locations</a></li>
+              <li><a href=".">Life at Netflix</a></li>
               <li>
                 <ul>
-                  <li><a href="#">Netflix culture memo</a></li>
-                  <li><a href="#">Work life balance</a></li>
-                  <li><a href="#">Inclusion &amp; diversity</a></li>
-                  <li><a href="#">Blog</a></li>
+                  <li><a href=".">Netflix culture memo</a></li>
+                  <li><a href=".">Work life balance</a></li>
+                  <li><a href=".">Inclusion &amp; diversity</a></li>
+                  <li><a href=".">Blog</a></li>
                 </ul>
               </li>
             </ul>

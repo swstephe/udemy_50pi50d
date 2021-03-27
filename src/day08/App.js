@@ -1,3 +1,5 @@
+import Label from './Label'
+
 function App() {
   return (
     <div className="container">
@@ -5,14 +7,14 @@ function App() {
       <form>
         <div className="form-control">
           <input id="email" type="text" required />
-          <label htmlFor="email">Email</label>
+          <Label htmlFor="email">Email</Label>
         </div>
         <div className="form-control">
           <input id="password" type="password" required />
-          <label htmlFor="password">Password</label>
+          <Label htmlFor="password">Password</Label>
         </div>
         <button className="btn">Login</button>
-        <p className="text">Don't have an account? <a href="#">Register</a></p>
+        <p className="text">Don't have an account? <a href=".">Register</a></p>
       </form>
     </div>
   )

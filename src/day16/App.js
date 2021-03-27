@@ -1,28 +1,29 @@
+import { useState } from 'react'
+
+import { range } from '../utils'
+
+import BigCup from './BigCup'
+import SmallCup from './SmallCup'
+
 function App() {
+  const totalCups = 8
+  const [cups, setCups] = useState(0)
+
   return (
     <>
       <h1>Drink Water</h1>
       <h3>Goal 2 Liters</h3>
 
-      <div className="cup">
-        <div className="remained" id="remained">
-          <span id="liters"/>
-          <small>Remained</small>
-        </div>
-        <div className="percentage" id="percentage"/>
-      </div>
+      <BigCup cups={cups} totalCups={totalCups}/>
 
       <p className="text">Select how many glasses of water that you have drank</p>
-      <div className="cups">
-        <div className="cup cup-small">250 ml</div>
-        <div className="cup cup-small">250 ml</div>
-        <div className="cup cup-small">250 ml</div>
-        <div className="cup cup-small">250 ml</div>
-        <div className="cup cup-small">250 ml</div>
-        <div className="cup cup-small">250 ml</div>
-        <div className="cup cup-small">250 ml</div>
-        <div className="cup cup-small">250 ml</div>
-      </div>
+      <div className="cups">{range(totalCups).map(idx =>
+        <SmallCup
+          key={idx}
+          full={idx < cups}
+          onClick={() => setCups(idx < cups ? idx : idx + 1)}
+        />
+      )}</div>
     </>
   )
 }

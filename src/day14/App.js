@@ -1,16 +1,19 @@
+import classNames from 'classnames'
+import { useState } from 'react'
+import Toggle from './Toggle'
+
 function App() {
+  const [active, setActive] = useState(true)
+  const menu = ['Home', 'Works', 'About', 'Contact']
+
   return (
-    <nav id="nav" className="active">
+    <nav id="nav" className={classNames({active})}>
       <ul>
-        <li><a href="">Home</a></li>
-        <li><a href="">Works</a></li>
-        <li><a href="">About</a></li>
-        <li><a href="">Contact</a></li>
+        {menu.map((item, idx) => (
+          <li key={idx}><a href="/day14">{item}</a></li>
+        ))}
       </ul>
-      <button className="icon" id="toggle">
-        <span className="line line1"/>
-        <span className="line line2"/>
-      </button>
+      <Toggle onClick={() => setActive(!active)}/>
     </nav>
   )
 }

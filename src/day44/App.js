@@ -1,11 +1,13 @@
+import { useState } from 'react'
+import RangeSlider from './RangeSlider'
+
 function App() {
+  const [value, setValue] = useState(50)
+
   return (
     <>
       <h2>Custom Range Slider</h2>
-      <div className="range-container">
-        <input type="range" id="range" min="0" max="100"/>
-        <label htmlFor="range">50</label>
-      </div>
+      <RangeSlider min={0} max={100} value={value} setValue={setValue}/>
     </>
   )
 }
