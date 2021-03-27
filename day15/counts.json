@@ -1,0 +1,17 @@
+[
+  {
+    "icon": "twitter",
+    "count": 12000,
+    "label": "Twitter Followers"
+  },
+  {
+    "icon": "youtube",
+    "count": 5000,
+    "label": "YouTube Subscribers"
+  },
+  {
+    "icon": "facebook",
+    "count": 7500,
+    "label": "Faceback Fans"
+  }
+]
